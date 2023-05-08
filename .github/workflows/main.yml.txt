@@ -1,0 +1,14 @@
+name: My Workflow
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Set Content Security Policy
+        run: echo "Content-Security-Policy: connect-src 'self' data:;" >> $GITHUB_WORKSPACE/index.html
+      - name: Build
+        run: npm run build
